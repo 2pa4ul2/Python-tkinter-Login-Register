@@ -3,14 +3,30 @@
 import tkinter as ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+import os
+
+
+def check_account(username):
+    with open('user_info.txt', 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if line.strip() == f"Username: {username}":
+                return True
+    return False
+
 
 def login():
-   username = 'paul'
-   password = 'paul'
-   if username == entry_field.get() and password == entry_passfield.get():
-        messagebox.showinfo(title= "Complete", message="Login complete.")
-   else:
-        messagebox.showinfo(title= "Complete", message="Login incomplete.")
+    username = entry_field.get()
+    password = entry_passfield.get()
+
+    if check_account(username):
+        messagebox.showinfo(title="Complete", message="Login complete.")
+    else:
+        messagebox.showinfo(title="Complete", message="Account not registered.")
+
+
+def register():
+    os.system("python register.py")
 
 #create window
 window = ttk.Tk()
@@ -43,7 +59,7 @@ entry_field = ttk.Entry(frame1, font=('montserrat', 16,))
 pass_label = ttk.Label(frame1, text='Password',bg = '#1f2533', fg='#ffffff', font=('montserrat', 16))
 entry_passfield = ttk.Entry(frame1, show='*', font=('montserrat', 16))
 login_button = ttk.Button(frame1, text='   Login  ', bg = '#66fcf1', font=('montserrat', 16), command=login)
-reg_button = ttk.Button(frame1, text='Register', bg = '#fff', font=('montserrat', 16), command=login)
+reg_button = ttk.Button(frame1, text='Register', bg = '#fff', font=('montserrat', 16), command=register)
 
 entry_field.config()
 
