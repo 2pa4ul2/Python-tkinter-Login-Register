@@ -37,18 +37,18 @@ frame2 = ttk.Frame( master = window,bg = '#84ceeb')
 frame2.pack(side='left', fill=ttk.BOTH, expand=ttk.YES)#place/display the frame
 
 #creation of widgets
-login_label = ttk.Label(frame1, text='Login Account',bg = '#1f2533', fg='#ffffff', font=('montserrat', 24, 'bold'))
-entry_label = ttk.Label(frame1, text='Username',bg = '#1f2533', fg='#ffffff', font=('montserrat', 12))
-entry_field = ttk.Entry(frame1, font=('montserrat', 14,))
-pass_label = ttk.Label(frame1, text='Password',bg = '#1f2533', fg='#ffffff', font=('montserrat', 12))
-entry_passfield = ttk.Entry(frame1, show='*', font=('montserrat', 14))
+login_label = ttk.Label(frame1, text='Login Account',bg = '#1f2533', fg='#ffffff', font=('montserrat', 40, 'bold'))
+entry_label = ttk.Label(frame1, text='Username',bg = '#1f2533', fg='#ffffff', font=('montserrat', 16))
+entry_field = ttk.Entry(frame1, font=('montserrat', 16,))
+pass_label = ttk.Label(frame1, text='Password',bg = '#1f2533', fg='#ffffff', font=('montserrat', 16))
+entry_passfield = ttk.Entry(frame1, show='*', font=('montserrat', 16))
 login_button = ttk.Button(frame1, text='   Login  ', bg = '#66fcf1', font=('montserrat', 16), command=login)
 reg_button = ttk.Button(frame1, text='Register', bg = '#fff', font=('montserrat', 16), command=login)
 
 entry_field.config()
 
 #placing/displaying all the widget
-login_label.pack(pady=100)
+login_label.pack(pady=80)
 entry_label.pack(pady=10)
 entry_field.pack()
 pass_label.pack(pady=10)
