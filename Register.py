@@ -4,67 +4,76 @@ import tkinter as ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
-def register():
-    # Get input values
-    first_name = Fname_entry.get()
-    last_name = Lname_entry.get()
-    username = entry_user.get()
-    password = entry_passfield.get()
+def frame_2():
+    #create of frame where the widgets will be placed
+    frame2 = ttk.Frame( master = window,width=200, bg = '#6387f2')
+    frame2.pack(side='left', fill=ttk.BOTH,expand=ttk.YES)#place/display the frame
 
-    # Validate input values
-    if not first_name or not last_name or not username or not password:
-        messagebox.showinfo(title="Incomplete", message="Please fill in all fields.")
-        return
+    start_mess = ttk.Label(frame2, text='Start your',bg = '#6387f2', fg='#ffffff', font=('montserrat', 20, 'bold'))
+    with_mess = ttk.Label(frame2, text='Journey with us',bg = '#6387f2', fg='#ffffff', font=('montserrat', 20, 'bold'))
+    create_mess = ttk.Label(frame2, text='create an account and Join our community',bg = '#6387f2', fg='#ffffff', font=('montserrat', 10))
 
-    # Create a text file with the input information
-    try:
-        with open('user_info.txt', 'w') as file:
-            file.write(f"First Name: {first_name}\n")
-            file.write(f"Last Name: {last_name}\n")
-            file.write(f"Username: {username}\n")
-            file.write(f"Password: {password}\n")
-        messagebox.showinfo(title="Complete", message="Registration complete. User info saved.")
-    except Exception as e:
-        messagebox.showinfo(title="Error", message="An error occurred while saving user info.")
+    image = Image.open("SELL.png")
+    photo = ImageTk.PhotoImage(image)
+    label = ttk.Label(frame2, image=photo, bg='#6387f2')
+    label.place(x=100, y=80)
 
-#create window
-window = ttk.Tk()
-window.title('Login System')# title the mainwindow
-window.geometry('1000x650')
-window.bind('<Escape>', lambda event: window.quit())#set escape as exit window
+    #place
+    start_mess.place(x=50,y=300)
+    with_mess.place(x=50,y=350)
+    create_mess.place(x=50,y=400)
 
 
-#create of frame where the widgets will be placed
-frame1 = ttk.Frame(master = window,bg = '#84ceeb')
-frame1.pack(side='right', anchor='n', fill=ttk.BOTH, expand=ttk.TRUE)#place/display the frame
-frame2 = ttk.Frame(  master = window,bg = '#1f2533', width=650)
-frame2.pack(side='left', fill=ttk.BOTH, expand=ttk.YES)#place/display the frame
+def frame_1():
+    global entry_user, entry_passfield,Lname_entry,Fname_entry
+    #frame 1
+    frame1 = ttk.Frame( master = window,bg = '#FFFFFF', width=400)
+    frame1.pack(side='right', anchor='n', fill=ttk.BOTH, expand=ttk.TRUE)#place/display the frame
 
-#creation of widgets
-login_label = ttk.Label(frame2, text='Register Account',bg = '#1f2533', fg='#ffffff', font=('montserrat', 40, 'bold'))
+    #creation of widgets
+    login_label = ttk.Label(frame1, text='Welcome to Sellify',bg = '#FFFFFF', fg='#6387f2', font=('montserrat', 25, 'bold'))
 
-Fname_label = ttk.Label(frame2, text='First',bg = '#1f2533', fg='#ffffff', font=('montserrat', 16))
-Fname_entry = ttk.Entry(frame2, font=('montserrat', 16,))
-Lname_label = ttk.Label(frame2, text='Last',bg = '#1f2533', fg='#ffffff', font=('montserrat', 16))
-Lname_entry = ttk.Entry(frame2, font=('montserrat', 16,))
+    Fname_label = ttk.Label(frame1, text='First Name',bg = '#FFFFFF', fg='BLACK', font=('montserrat', 12))
+    Fname_entry = ttk.Entry(frame1, width=27,font=('montserrat',12,),highlightcolor='#6387f2', highlightthickness=2)
 
-entry_label = ttk.Label(frame2, text='Username',bg = '#1f2533', fg='#ffffff', font=('montserrat', 16))
-entry_user = ttk.Entry(frame2, font=('montserrat', 16,))
-pass_label = ttk.Label(frame2, text='Password',bg = '#1f2533', fg='#ffffff', font=('montserrat', 16))
-entry_passfield = ttk.Entry(frame2, show='*', font=('montserrat', 16))
-reg_button = ttk.Button(frame2, text='Register', bg = '#fff', font=('montserrat', 16), command=register)
+    Lname_label = ttk.Label(frame1, text='Last Name', bg='#FFFFFF', fg='BLACK', font=('montserrat', 12))
+    Lname_entry = ttk.Entry(frame1, width=27, font=('montserrat', 12,), highlightcolor='#6387f2', highlightthickness=2)
+
+    entry_label = ttk.Label(frame1, text='Username', bg='#FFFFFF', fg='BLACK', font=('montserrat', 12))
+    entry_user = ttk.Entry(frame1, width=27, font=('montserrat', 12,), highlightcolor='#6387f2', highlightthickness=2)
+
+    pass_label = ttk.Label(frame1, text='Password',bg = '#FFFFFF', fg='BLACK', font=('montserrat', 12))
+    entry_passfield = ttk.Entry(frame1, show='*', width=27, font=('montserrat', 12),highlightcolor='#6387f2', highlightthickness=2)
+
+    confirm_label = ttk.Label(frame1, text='Confirm Password',bg = '#FFFFFF', fg='BLACK', font=('montserrat', 12))
+    confirm_pass = ttk.Entry(frame1, show='*', width=27, font=('montserrat', 12), highlightcolor='#6387f2',highlightthickness=2)
+
+    login_button = ttk.Button(frame1, text='   Login  ',width=27, bg = '#6387f2',foreground='#FFFFFF', font=('montserrat', 12),activebackground= '#4973f2',activeforeground='#a9a9a9', highlightbackground= 'BLACK',height=2)
+    reg_button = ttk.Button(frame1, text='Register',foreground='#6387f2',highlightcolor='#ffffff',highlightthickness=3,activebackground= '#4973f2',highlightbackground='#ffffff', bg = '#ffffff',width=27, font=('montserrat', 12))
 
 
-#placing/displaying all the widget
-login_label.pack(pady=30)
-Fname_label.pack(pady=10)
-Fname_entry.pack()
-Lname_label.pack(pady=10)
-Lname_entry.pack()
-entry_label.pack(pady=10)
-entry_user.pack()
-pass_label.pack(pady=10)
-entry_passfield.pack()
-reg_button.pack(pady=20)
 
-window.mainloop() #looping of window so it would display
+    #placing/displaying all the widget
+    login_label.place(x= 125,y=80)
+
+    Fname_label.place(x= 150,y=140)
+    Lname_label.place(x=150, y=200)
+    entry_label.place(x=150, y=260)
+    pass_label.place(x=150, y=320)
+    confirm_label.place(x=150, y=380)
+
+    Fname_entry.place(x= 150,y=170)
+    Lname_entry.place(x= 150,y=230)
+    entry_user.place(x= 150,y=290)
+    entry_passfield.place(x= 150,y=350)
+    confirm_pass.place(x=150, y=410)
+
+    login_button.place(x= 150,y=450)
+    reg_button.place(x= 149,y=510)
+
+
+
+frame_1()
+frame_2()
+
+window.mainloop()
